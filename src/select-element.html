@@ -1,0 +1,24 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="select-element">
+  <template>
+    <style>
+    </style>
+    <template is="dom-repeat" items="{{list}}">
+      <template is="dom-if" if="{{item.selected}}">
+        <img src="{{item.src}}" width="300">
+      </template>
+    </template>
+  </template>
+
+  <script>
+    Polymer({
+      is: "select-element",
+      properties: {
+        list: {
+          type: Array,
+          notify: true
+        }
+      }
+    });
+  </script>
+</dom-module>
