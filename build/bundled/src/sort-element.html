@@ -1,0 +1,55 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="element-list.html">
+<link rel="import" href="select-element.html">
+</head><body><dom-module id="sort-element">
+
+  <template>
+    <style>
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+      }
+      .inport-board {
+        width: 100%;
+      }
+      .view-board {
+        width: 320px;
+        min-height: 480px;
+        margin-left: 30px;
+        background-color: #faf9f7;
+        border-radius: 8px;
+      }
+      .content-list {
+        border-bottom: 1px dotted #bcb8ad;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+      }
+      element-list {
+        padding-bottom: 10px;
+        min-height: 126px;
+      }
+    </style>
+    <div class="container">
+      <div class="inport-board">
+        <template is="dom-repeat" items="{{elements}}">
+          <div class="content-list">
+            <element-list list="{{item.data}}"></element-list>
+            <input type="file" on-change="handleFileSelect" multiple="">
+          </div>
+        </template>
+      </div>
+
+      <div class="view-board">
+        <template is="dom-repeat" items="{{elements}}">
+          <select-element list="{{item.data}}"></select-element>
+        </template>
+      </div>
+    </div>
+  </template>
+
+  <script>Polymer({is:"sort-element",properties:{elements:{type:Array,value:function(){return[{data:[]},{data:[]},{data:[]}]}}},handleFileSelect:function(e){for(var t,a=e.target.files,i=e.model,n=0;t=a[n];n++)if(t.type.match("image.*")){var r=new FileReader;r.onload=function(e){return function(t){if(!i.item.data.find(function(t){if(t.id===e.lastModified)return t})){var a=i.item.data.concat({id:e.lastModified,src:t.target.result,selected:!1,name:e.name});i.set("item.data",a)}}}(t),r.readAsDataURL(t)}}});</script>
+
+</dom-module>
+</body></html>

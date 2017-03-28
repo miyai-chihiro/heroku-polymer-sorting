@@ -1,0 +1,28 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+</head><body><dom-module id="element-thumb">
+  <style>
+    :host {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+      background-color: #daeee9;
+      margin: 8px;
+      border-radius: 4px;
+      vertical-align: middle;
+    }
+    :host([selected]) {
+      background-color: #068681;
+    }
+    img {
+      max-width: 80px;
+      max-height: 80px;
+    }
+  </style>
+  <template>
+    <img src="{{item.src}}" alt="{{item.name}}">
+  </template>
+  <script>Polymer({is:"element-thumb",properties:{item:Object}});</script>
+</dom-module>
+</body></html>

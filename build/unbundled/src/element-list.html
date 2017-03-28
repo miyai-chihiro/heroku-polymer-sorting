@@ -1,0 +1,20 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="element-thumb.html">
+</head><body><dom-module id="element-list">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        justify-content: felx-start;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+    </style>
+    <template id="elements" is="dom-repeat" items="{{list}}">
+       <element-thumb on-tap="onSelectElement" item="{{item}}" selected$="[[item.selected]]"></element-thumb>
+    </template>
+  </template>
+
+  <script>Polymer({is:"element-list",properties:{list:{type:Array,notify:!0}},onSelectElement:function(e){for(var t,i=e.model,s=[],l=!1,r=0;t=this.list[r];r++)l=i.item.id===t.id,s.push({id:t.id,src:t.src,selected:l,name:t.name});this.set("list",s)}});</script>
+</dom-module>
+</body></html>
